@@ -54,13 +54,13 @@ def setup(env: simpy.Environment, num_employees, avg_support_time, customer_inte
         i += 1
         env.process(customer(env, i, call_center))
 
-    
-for _ in range(100):
+n = 1000   
+for _ in range(n):
     env = simpy.Environment()
     env.process(setup(env, NUM_EMPLOYEES, AVG_SUPPORT_TIME, CUSTOMER_INTERVAL))
     env.run(until=SIM_TIME)
 
 if LOGGING_ENABLED:
-    logger.info(f"Customer handled on average: {customer_handled / 100}")
+    logger.info(f"Customer handled on average: {customer_handled / n}")
 else:
-    print(f"Customer handled on average at Call Center: {customer_handled / 100}")
+    print(f"Customer handled on average at Call Center: {customer_handled / n}")
