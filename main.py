@@ -8,7 +8,8 @@ import logging
 NUM_EMPLOYEES = 2
 AVG_SUPPORT_TIME = 5
 CUSTOMER_INTERVAL = 3
-SIM_TIME = 60
+SIM_TIME = 120
+PATIENCE = [1, 3]
 
 # Configure logging
 LOGGING_ENABLED = True
@@ -44,7 +45,7 @@ class CallCenter:
 def customer(env: simpy.Environment, name, call_center: CallCenter):
     global customer_handled
     global impatient_customers
-    patience = np.random.uniform(1, 3)
+    patience = np.random.uniform(PATIENCE[0], PATIENCE[1])
     arrival_time = env.now
     log_info(
         text=f"Customer {name} enters waiting queue at {env.now:.2f} with patience {patience:.2f} minutes")
