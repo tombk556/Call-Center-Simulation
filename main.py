@@ -55,7 +55,7 @@ def customer(env: simpy.Environment, name, call_center: CallCenter, patience: li
             log_info(text=f"Customer {name} leaves call at {env.now:.2f}")
             customer_handled += 1
         else:
-            log_warning(text=f"Customer {name} leaves queue after waiting more than {wait_time:.2f} minutes")
+            log_warning(text=f"Customer {name} leaves queue after at {env.now:.2f} waiting more than {wait_time:.2f} minutes")
             impatient_customers += 1
 
 
