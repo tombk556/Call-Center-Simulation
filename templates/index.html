@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Call Center Simulation</title>
+</head>
+<body>
+    <h1>Run Simulation</h1>
+    <form id="simulation-form">
+        <label for="numEmployees">Number of Employees:</label>
+        <input type="number" id="numEmployees" name="numEmployees" value="5" required><br>
+        
+        <label for="avgSupportTime">Average Support Time (minutes):</label>
+        <input type="number" id="avgSupportTime" name="avgSupportTime" value="5" required><br>
+        
+        <label for="customerInterval">Customer Interval (minutes):</label>
+        <input type="number" id="customerInterval" name="customerInterval" value="1" required><br>
+        
+        <label for="simTime">Simulation Time (minutes):</label>
+        <input type="number" id="simTime" name="simTime" value="480" required><br>
+        
+        <label for="patience">Patience Range (minutes):</label>
+        <input type="text" id="patience" name="patience" value="1-3" required><br>
+        
+        <button type="submit">Run Simulation</button>
+    </form>
+    <div id="results"></div>
+</body>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+</html>
