@@ -21,8 +21,10 @@ $(document).ready(function() {
             }),
             success: function(response) {
                 $('#results').html(`
-                    <p>Customers Handled: ${response.customer_handled}</p>
-                    <p>Impatient Customers: ${response.impatient_customers}</p>
+                    <div class="notification ">
+                        <p class="is-size-6 has-text-weight-bold">Bediente Kunden: ${response.customer_handled}</p>
+                        <p class="is-size-6 has-text-weight-bold">Abgesprungen Kunden: ${response.impatient_customers}</p>
+                    </div>
                 `);
             }
         });

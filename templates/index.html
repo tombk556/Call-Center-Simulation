@@ -3,30 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Call Center Simulation</title>
 </head>
 <body>
-    <h1>Run Simulation</h1>
-    <form id="simulation-form">
-        <label for="numEmployees">Number of Employees:</label>
-        <input type="number" id="numEmployees" name="numEmployees" value="5" required><br>
-        
-        <label for="avgSupportTime">Average Support Time (minutes):</label>
-        <input type="number" id="avgSupportTime" name="avgSupportTime" value="5" required><br>
-        
-        <label for="customerInterval">Customer Interval (minutes):</label>
-        <input type="number" id="customerInterval" name="customerInterval" value="1" required><br>
-        
-        <label for="simTime">Simulation Time (minutes):</label>
-        <input type="number" id="simTime" name="simTime" value="480" required><br>
-        
-        <label for="patience">Patience Range (minutes):</label>
-        <input type="text" id="patience" name="patience" value="1-3" required><br>
-        
-        <button type="submit">Run Simulation</button>
-    </form>
-    <div id="results"></div>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Run Simulation</h1>
+            <div class="columns">
+                <div class="column is-one-third">
+                    <form id="simulation-form">
+                        <div class="field">
+                            <label class="label" for="numEmployees">Anzahl an Telefonberatern :</label>
+                            <div class="control">
+                                <input class="input" type="number" id="numEmployees" name="numEmployees" value="5" required style="width: 300px;">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="avgSupportTime">⌀ Support Zeit (Minuten):</label>
+                            <div class="control">
+                                <input class="input" type="number" id="avgSupportTime" name="avgSupportTime" value="5" required style="width: 300px;">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="customerInterval">Interval:</label>
+                            <div class="control">
+                                <input class="input" type="number" id="customerInterval" name="customerInterval" value="1" required style="width: 300px;">
+                                <p class="is-size-7">Bsp: Bei 5 kommt jede 5. Minute ein neuer Kunde.</p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="simTime">Simulation Zeit (Minuten):</label>
+                            <div class="control">
+                                <input class="input" type="number" id="simTime" name="simTime" value="480" required style="width: 300px;">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="patience">Geduldsspanne (Minuten)</label>
+                            <div class="control">
+                                <input class="input" type="text" id="patience" name="patience" value="1-3" required style="width: 300px;">
+                                <p class="is-size-7">Bsp.: Nach 1-3 Minuten Wartezeit verlässt der Kunde </p>
+                                <p class="is-size-7">die Warteschlange.</p>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <button class="button is-link" type="submit" style="width: 300px;">Run Simulation</button>
+                        </div>
+                    </form>
+                    <div id="results"  style="margin-top: 20px; width: 300px;">
+                        <div class="notification ">
+                            <p class="is-size-6 has-text-weight-bold">Bediente Kunden: ...</p>
+                            <p class="is-size-6 has-text-weight-bold">Abgesprungen Kunden: ...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-two-third">
+            </div>
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
-<script src="{{ url_for('static', filename='index.js') }}"></script>
 </html>
