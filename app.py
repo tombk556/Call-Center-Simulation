@@ -22,7 +22,10 @@ def run_model():
                                                            customer_interval=CUSTOMER_INTERVAL,
                                                            sim_time=SIM_TIME, patience=PATIENCE)
     
-    return jsonify({"customer_handled": customer_handled, "impatient_customers": impatient_customers})
+    with open('call_center_log.log', 'r') as file:
+        logs = file.read()
+
+    return jsonify({"customer_handled": customer_handled, "impatient_customers": impatient_customers, "logs": logs})
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=3000, debug=True)

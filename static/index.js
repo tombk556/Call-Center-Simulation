@@ -21,11 +21,12 @@ $(document).ready(function() {
             }),
             success: function(response) {
                 $('#results').html(`
-                    <div class="notification ">
+                    <div class="notification">
                         <p class="is-size-6 has-text-weight-bold">Bediente Kunden: ${response.customer_handled}</p>
                         <p class="is-size-6 has-text-weight-bold">Abgesprungen Kunden: ${response.impatient_customers}</p>
                     </div>
                 `);
+                $('#logs').text(response.logs);
             }
         });
     });
