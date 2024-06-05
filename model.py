@@ -4,13 +4,10 @@ import simpy
 import logging
 import os
 
-# Time is in minutes!!!
-
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Call Center Simulator")
-logger.propagate = False  # To prevent logging to console by root logger
-
+logger.propagate = False
 
 file_handler = logging.FileHandler("call_center_log.log", mode="w")
 file_handler.setLevel(logging.INFO)
