@@ -1,4 +1,27 @@
-https://vcc.live/call-center-kpis/average-wait-time/#:~:text=Inbound%20call%20centers%20typically%20aim,of%20less%20than%201%20minute.
+# Call Center Discrete Event Simulation Tool
+
+## Run the Application using Python: 
+
+### Install the Python Packages
+
+```sh
+pip install -r requirements.txt
+```
+
+### Run the App with Gunicorn:
+
+```sh
+python app.py
+```
+
+Open the **http://127.0.0.1:3000**
+
+## Run the Application with Docker:
+
+```sh
+docker-compose up
+```
 
 
-`Inbound call centers typically aim for an Average Wait Time of around 30 seconds to 2 minutes. This ensures that customers are attended to promptly and their issues are addressed in a timely manner. Customer support hotlines often target an Average Wait Time of less than 1 minute.`
+## Architecture and Information Flow
+![alt text](image.png)
