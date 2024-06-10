@@ -16,7 +16,7 @@ python example.py
 ## Run the Web-Application using Python: 
 
 
-### Run the App with Gunicorn:
+### Run the Web-Application:
 
 ```sh
 python app.py
