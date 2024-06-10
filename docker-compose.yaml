@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  flask_app:
+    container_name: Call-Center-Simulation-App
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command:  ["python", "app.py"]

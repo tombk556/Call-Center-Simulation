@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from model import run_simulation
-import json
+from src.model import run_simulation
 
 app = Flask(__name__)
 
