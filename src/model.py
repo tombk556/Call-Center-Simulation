@@ -1,3 +1,4 @@
+"""Tom Bischopink © - HTWD 2024"""
 import random
 import numpy as np
 import simpy

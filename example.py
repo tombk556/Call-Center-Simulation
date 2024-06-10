@@ -14,8 +14,8 @@ customer_handled, impatient_customers = run_simulation(num_employees=NUM_EMPLOYE
                                                        customer_interval=CUSTOMER_INTERVAL,
                                                        sim_time=SIM_TIME, patience=PATIENCE,
                                                        enable_terminal_logging=True,
-                                                       time_factor=0.5)
-print("------ Example 1: Single Mode ------")
+                                                       time_factor=0.02)
+print("------ Example 1: Single Mode (20 iterations) ------")
 print(f"Customer handled: {customer_handled}")
 print(f"Impatient customers: {impatient_customers} \n")
 
