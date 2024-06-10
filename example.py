@@ -1,17 +1,20 @@
 from src.model import run_simulation
 
 
-#### ---------- Example 1: Single Mode ---------- ####
 NUM_EMPLOYEES = 5
 AVG_SUPPORT_TIME = 5
 CUSTOMER_INTERVAL = 1
 SIM_TIME = 8 * 60
 PATIENCE = [1, 3]
 
+#### ---------- Example 1: Single Mode ---------- ####
+
 customer_handled, impatient_customers = run_simulation(num_employees=NUM_EMPLOYEES, 
                                                        avg_support_time=AVG_SUPPORT_TIME, 
                                                        customer_interval=CUSTOMER_INTERVAL,
-                                                       sim_time=SIM_TIME, patience=PATIENCE)
+                                                       sim_time=SIM_TIME, patience=PATIENCE,
+                                                       enable_terminal_logging=True,
+                                                       time_factor=0.5)
 print("------ Example 1: Single Mode ------")
 print(f"Customer handled: {customer_handled}")
 print(f"Impatient customers: {impatient_customers} \n")

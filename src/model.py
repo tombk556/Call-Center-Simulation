@@ -2,20 +2,27 @@ import random
 import numpy as np
 import simpy
 import logging
+from simpy.rt import RealtimeEnvironment
 import os
 
 
+# Basic configuration for the logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Call Center Simulator")
 logger.propagate = False
 
+# File handler setup
 file_handler = logging.FileHandler("call_center_log.log", mode="w")
 file_handler.setLevel(logging.INFO)
-
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(formatter)
-
 logger.addHandler(file_handler)
+
+# Stream handler setup (for terminal output)
+stream_handler = logging.StreamHandler()
+stream_handler.setLevel(logging.INFO)
+stream_handler.setFormatter(formatter)
+logger.addHandler(stream_handler)
 
 def log_info(logger: logging.Logger = logger, text: str = ""):
     logger.info(text)
@@ -68,17 +75,24 @@ def setup(env: simpy.Environment, num_employees, avg_support_time, customer_inte
         env.process(customer(env, i, call_center, patience))
 
 
-def run_simulation(num_employees: int, avg_support_time: int, customer_interval: int, patience: list, sim_time: int):
+def run_simulation(num_employees: int, avg_support_time: int,
+                   customer_interval: int, patience: list, sim_time: int, 
+                   enable_terminal_logging: bool = False, time_factor: int = 0):
     global customer_handled
     global impatient_customers
-
+    
+    if enable_terminal_logging:
+        logger.addHandler(stream_handler)
+    else:
+        logger.removeHandler(stream_handler)
+        
     customer_handled = 0
     impatient_customers = 0
     
     file_handler.close()
     os.remove("call_center_log.log")
 
-    env = simpy.Environment()
+    env = RealtimeEnvironment(factor=time_factor, strict=False)
     env.process(setup(env, num_employees, avg_support_time,
                 customer_interval, patience))
     env.run(until=sim_time)
