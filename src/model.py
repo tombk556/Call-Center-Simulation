@@ -40,7 +40,7 @@ class CallCenter:
         self.avg_support_time = avg_support_time
 
     def support(self, customer):
-        random_time = abs(np.random.normal(self.avg_support_time, self.avg_support_time / 1000))
+        random_time = abs(np.random.normal(self.avg_support_time, self.avg_support_time / 10))
         yield self.env.timeout(random_time)
         log_info(text=f"Support finished for {customer} at {self.env.now:.2f}")
 
@@ -48,9 +48,8 @@ class CallCenter:
 def customer(env: simpy.Environment, name, call_center: CallCenter, patience: list):
     global customer_handled
     global impatient_customers
-    random_patience = np.random.uniform(patience[0], patience[1])
     middle = (patience[0] + patience[1]) / 2
-    random_patience = abs(np.random.normal(middle, middle/ 1000))
+    random_patience = abs(np.random.normal(middle, middle/ 10))
     arrival_time = env.now
     log_info(text=f"Customer {name} enters waiting queue at {env.now:.2f} with patience {random_patience:.2f} minutes")
     with call_center.staff.request() as request:
