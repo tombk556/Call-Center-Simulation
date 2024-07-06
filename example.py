@@ -13,7 +13,7 @@ customer_handled, impatient_customers = run_simulation(num_employees=NUM_EMPLOYE
                                                        avg_support_time=AVG_SUPPORT_TIME, 
                                                        customer_interval=CUSTOMER_INTERVAL,
                                                        sim_time=SIM_TIME, patience=PATIENCE,
-                                                       enable_terminal_logging=True,
+                                                       enable_terminal_logging=False,
                                                        time_factor=0.02)
 print("------ Example 1: Single Mode (20 iterations) ------")
 print(f"Customer handled: {customer_handled}")
@@ -23,7 +23,7 @@ sum_handled_customers = []
 sum_impatient_customers = []
 
 #### ---------- Example 2: Experiment Mode ---------- ####
-for _ in range(20):
+for _ in range(100):
     customer_handled, impatient_customers = run_simulation(num_employees=NUM_EMPLOYEES, 
                                                        avg_support_time=AVG_SUPPORT_TIME, 
                                                        customer_interval=CUSTOMER_INTERVAL,
